@@ -6,6 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import javax.print.DocFlavor;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Driver {
     private Driver() {
@@ -32,12 +37,43 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
                     break;
+                case "chrome-remote":
+                    try {
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        URL url = new URL("");
+                        driver = new RemoteWebDriver(url, chromeOptions);
+                    }catch(MalformedURLException e){
+                        e.printStackTrace();
 
+                    }
+                    break;
+                case "firefox-remote":
+                    try {
+                        FirefoxOptions firefoxOptions = new FirefoxOptions();
+                        URL url = new URL("");
+                        driver = new RemoteWebDriver(url, firefoxOptions);
+                    }catch(MalformedURLException e){
+                        e.printStackTrace();
 
+                    }
+                    break;
+
+                default:
+                    throw new RuntimeException( "Wrong browser name "+ browser);
 
 
             }
         }
+        return driver;
 
     }
+
+    public static void closeDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+
+        }
+    }
 }
+
