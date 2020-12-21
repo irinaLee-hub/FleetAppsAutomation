@@ -4,9 +4,11 @@ import com.fleetApps.utilities.ConfigurationReader;
 import com.fleetApps.utilities.Driver;
 
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -30,6 +32,7 @@ public class Hooks {
             scenario.attach(screenshot,"image/png",scenario.getName());
 
         }
+     //   Driver.closeDriver();
 
     }
 

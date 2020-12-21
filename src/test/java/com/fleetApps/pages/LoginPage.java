@@ -1,10 +1,12 @@
 package com.fleetApps.pages;
 
 import com.fleetApps.utilities.BasePage;
+import com.fleetApps.utilities.ConfigurationReader;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class loginPage extends BasePage {
+public class LoginPage extends BasePage {
 
       @FindBy(id = "prependedInput")
     public WebElement usernameInputBox;
@@ -20,6 +22,19 @@ public class loginPage extends BasePage {
 
     @FindBy (linkText = "Forgot your password?")
     public WebElement forgotYourPasswordLink;
+
+
+    public void login(){
+        String userName= ConfigurationReader.getProperty("driver");
+        String password= ConfigurationReader.getProperty("password");
+
+        usernameInputBox.sendKeys(userName);
+        passwordInputBox.sendKeys(password + Keys.ENTER);
+
+
+    }
+
+
 
 
 }
