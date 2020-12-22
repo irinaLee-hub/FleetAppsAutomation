@@ -50,4 +50,10 @@ public class LoginStepDefs {
 
 
     }
+
+    @When("user enters Sales manager's credentials")
+    public void userEntersSalesManagerSCredentials() {
+
+        pages.loginPage().login("sales manager");
+    }
 }
