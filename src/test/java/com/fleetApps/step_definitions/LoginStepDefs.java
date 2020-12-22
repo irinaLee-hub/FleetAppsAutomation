@@ -32,9 +32,22 @@ public class LoginStepDefs {
     public void user_verifies_that_page_name_is_displayed(String pageName) {
         BrowserUtils.waitForVisibility(pages.quickLaunchpadPage().quickLaunchPadText,
                 Integer.parseInt(ConfigurationReader.getProperty("short_wait")));
-       // Assert.assertTrue(pages.quickLaunchpadPage().quickLaunchPadText.isDisplayed());
+        Assert.assertTrue(pages.quickLaunchpadPage().quickLaunchPadText.isDisplayed());
 
 
     }
 
+    @When("user enters Store manager's credentials")
+    public void userEntersStoreManagerSCredentials() {
+        pages.loginPage().login("store manager");
+
+    }
+
+    @Then("user verifies that {string} page name is displayed")
+    public void userVerifiesThatPageNameIsDisplayed(String dashboard) {
+
+        Assert.assertTrue(pages.dashboardPage().dashboardText.isDisplayed());
+
+
+    }
 }
