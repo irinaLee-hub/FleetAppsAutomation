@@ -5,11 +5,14 @@ import com.fleetApps.utilities.BrowserUtils;
 import com.fleetApps.utilities.ConfigurationReader;
 import com.fleetApps.utilities.Driver;
 import com.fleetApps.utilities.Pages;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import sun.plugin.dom.exception.BrowserNotSupportedException;
+
+import java.util.Map;
 
 public class LoginStepDefs {
     Pages pages=new Pages();
@@ -55,5 +58,19 @@ public class LoginStepDefs {
     public void userEntersSalesManagerSCredentials() {
 
         pages.loginPage().login("sales manager");
+    }
+
+    @Given("user logs in with the following credentials")
+    public void userLogsInWithTheFollowingCredentials(Map<String,String> values) {
+        pages.loginPage().login(values.get("username"),values.get("password"));
+    }
+
+    @Then("user navigates to Fleet and Vehicles")
+    public void userNavigatesToFleetAndVehicles() {
+
+    }
+
+    @And("user verifies that All Cars text is displayed")
+    public void userVerifiesThatAllCarsTextIsDisplayed() {
     }
 }

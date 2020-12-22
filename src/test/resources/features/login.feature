@@ -18,3 +18,11 @@ Feature: login
       When user enters Sales manager's credentials
       Then user verifies that "Dashboard" page name is displayed
 
+      @map
+  Scenario: login with different credentials
+    Given user logs in with the following credentials
+      | username | salesmanager101 |
+      | password | UserUser123     |
+
+    Then user navigates to Fleet and Vehicles
+    And user verifies that All Cars text is displayed
