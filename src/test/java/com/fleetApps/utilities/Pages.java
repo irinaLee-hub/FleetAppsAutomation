@@ -3,11 +3,13 @@ package com.fleetApps.utilities;
 import com.fleetApps.pages.DashboardPage;
 import com.fleetApps.pages.LoginPage;
 import com.fleetApps.pages.QuickLaunchpadPage;
+import com.fleetApps.pages.VehiclesPage;
 
 public class Pages {
     private LoginPage loginPage;
     private QuickLaunchpadPage quickLaunchpadPage;
     private DashboardPage dashboardPage;
+    private VehiclesPage vehiclesPage;
 
 
     public LoginPage loginPage(){
@@ -31,4 +33,12 @@ public class Pages {
         }
         return dashboardPage;
     }
+
+    public VehiclesPage vehiclesPage(){
+        if (vehiclesPage==null){
+            vehiclesPage= new VehiclesPage();
+        }
+        return vehiclesPage;
+    }
+
 }

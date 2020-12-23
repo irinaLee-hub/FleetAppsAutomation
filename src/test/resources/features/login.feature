@@ -21,8 +21,18 @@ Feature: login
       @map
   Scenario: login with different credentials
     Given user logs in with the following credentials
-      | username | salesmanager101 |
-      | password | UserUser123     |
+      | username |  |
+      | password |  |
 
     Then user navigates to Fleet and Vehicles
     And user verifies that All Cars text is displayed
+
+        @scenarioOutline
+  Scenario Outline: login with different roles
+    When user logs in as "<user_type>"
+    Then user verifies page name is "<page name>"
+    Examples:
+      | user_type     | page name       |
+      | driver        | Quick Launchpad |
+      | sales manager | Dashboard       |
+      | store manager | Dashboard       |

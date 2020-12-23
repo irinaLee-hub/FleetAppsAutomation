@@ -67,10 +67,35 @@ public class LoginStepDefs {
 
     @Then("user navigates to Fleet and Vehicles")
     public void userNavigatesToFleetAndVehicles() {
+        BrowserUtils.waitForClickability(pages.dashboardPage().accounts,
+                Integer.parseInt(ConfigurationReader.getProperty("medium_wait")));
+        BrowserUtils.hover(pages.dashboardPage().FleetModule);
+        BrowserUtils.waitForClickability(pages.dashboardPage().vehiclesPage,
+                Integer.parseInt(ConfigurationReader.getProperty("short_wait")));
+        pages.dashboardPage().vehiclesPage.click();
+        pages.vehiclesPage().allCarsText.isDisplayed();
 
     }
 
     @And("user verifies that All Cars text is displayed")
     public void userVerifiesThatAllCarsTextIsDisplayed() {
+        BrowserUtils.waitForVisibility(pages.vehiclesPage().allCarsText,
+                Integer.parseInt(ConfigurationReader.getProperty("medium_wait")));
+        Assert.assertTrue(pages.vehiclesPage().allCarsText.isDisplayed());
+
+    }
+
+    @When("user logs in as {string}")
+    public void userLogsInAs(String role) {
+        pages.loginPage().login(role);
+
+
+    }
+
+    @Then("user verifies page name is {string}")
+    public void userVerifiesPageNameIs(String pageName) {
+        Assert.assertTrue(pages.quickLaunchpadPage().quickLaunchPadText.getText().equals(pageName) ||
+                pages.dashboardPage().dashboardText.equals(pageName));
+
     }
 }
