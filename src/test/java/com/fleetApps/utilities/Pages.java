@@ -1,15 +1,13 @@
 package com.fleetApps.utilities;
 
-import com.fleetApps.pages.DashboardPage;
-import com.fleetApps.pages.LoginPage;
-import com.fleetApps.pages.QuickLaunchpadPage;
-import com.fleetApps.pages.VehiclesPage;
+import com.fleetApps.pages.*;
 
 public class Pages {
     private LoginPage loginPage;
     private QuickLaunchpadPage quickLaunchpadPage;
     private DashboardPage dashboardPage;
     private VehiclesPage vehiclesPage;
+    private VehicleContractPage vehicleContractPage;
 
 
     public LoginPage loginPage(){
@@ -39,6 +37,13 @@ public class Pages {
             vehiclesPage= new VehiclesPage();
         }
         return vehiclesPage;
+    }
+
+    public VehicleContractPage vehicleContractPage(){
+        if(vehiclesPage==null){
+            vehicleContractPage= new VehicleContractPage();
+        }
+        return vehicleContractPage;
     }
 
 }

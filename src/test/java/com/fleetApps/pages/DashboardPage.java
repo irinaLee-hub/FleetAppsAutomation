@@ -18,4 +18,7 @@ public class DashboardPage extends BasePage {
 
     @FindBy(xpath = "(//span[.='Accounts'])[3]")
     public WebElement accounts;
+
+    @FindBy(xpath = "//span[.='Vehicle Contracts']")
+    public WebElement vehicleContractPage;
 }
