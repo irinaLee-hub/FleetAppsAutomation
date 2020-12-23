@@ -27,7 +27,7 @@ Feature: login
     Then user navigates to Fleet and Vehicles
     And user verifies that All Cars text is displayed
 
-        @scenarioOutline
+  @scenarioOutline
   Scenario Outline: login with different roles
     When user logs in as "<user_type>"
     Then user verifies page name is "<page name>"
@@ -36,3 +36,9 @@ Feature: login
       | driver        | Quick Launchpad |
       | sales manager | Dashboard       |
       | store manager | Dashboard       |
+
+  @negativeScenario
+  Scenario: login with invalid credentials
+    When user enters "wrong" username and "wrong" password
+    Then user verifies "Invalid user name or password." warning message is displayed
+

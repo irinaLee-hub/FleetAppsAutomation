@@ -23,6 +23,9 @@ public class LoginPage extends BasePage {
     @FindBy (linkText = "Forgot your password?")
     public WebElement forgotYourPasswordLink;
 
+    @FindBy(css = "div[class='alert alert-error']>div")
+    public WebElement warningMessage;
+
 
     public void login(){
         String userName= ConfigurationReader.getProperty("driver");

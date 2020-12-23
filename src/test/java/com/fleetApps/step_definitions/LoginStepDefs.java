@@ -98,4 +98,17 @@ public class LoginStepDefs {
                 pages.dashboardPage().dashboardText.equals(pageName));
 
     }
+
+    @When("user enters {string} username and {string} password")
+    public void userEntersUsernameAndPassword(String username, String password) {
+        pages.loginPage().login(username,password);
+
+    }
+
+    @Then("user verifies {string} warning message is displayed")
+    public void userVerifiesWarningMessageIsDisplayed(String message) {
+        Assert.assertTrue(pages.loginPage().warningMessage.isDisplayed()
+        && pages.loginPage().warningMessage.getText().equals(message));
+
+    }
 }
