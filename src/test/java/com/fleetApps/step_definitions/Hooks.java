@@ -19,7 +19,7 @@ public class Hooks {
         System.out.println("Scenario= "+ scenario.getSourceTagNames());
         System.out.println("Scenario name: "+scenario.getName());
         System.out.println("Before method from Hooks class is running!");
-        Driver.getDriver().get(ConfigurationReader.getProperty("urlqa1"));
+        Driver.getDriver().get(ConfigurationReader.getProperty("urlqa2"));
         Driver.getDriver().manage().window().maximize();
 
     }
